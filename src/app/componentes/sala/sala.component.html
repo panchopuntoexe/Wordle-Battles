@@ -1,0 +1,11 @@
+<div class="title-container">
+  <div class="title">Wordle Battles</div>
+</div>
+<div class="nombreJugador">{{nombre}}</div>
+
+<app-juego (mensajeDeIntento)="recibirMensajeDeIntento($event)"></app-juego>
+
+<div class="grid" *ngFor="let indice of arregloEnemigos">
+    <app-juego-enemigo [nombreDeUsuario]="indice.nombre"
+                       [intento]="indice.intento"></app-juego-enemigo>
+</div>

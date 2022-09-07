@@ -1,0 +1,28 @@
+<div class="container">
+
+  <div class="main">
+    <h1 [textContent]="nombreDeUsuario"> </h1>
+    <div class="try-container" *ngFor="let try of intentos" #tryContainer>
+      <div class="letter-container" *ngFor="let letra of try.letras"
+           [class.match]="letra.estado === estadoDeLetra.CORRECTA"
+           [class.partial]="letra.estado === estadoDeLetra.PARCIALMENTE_CORRECTA"
+           [class.wrong]="letra.estado === estadoDeLetra.INCORRECTA"
+           [class.has-text]="letra.texto !== ''">
+        {{letra.texto}}
+      </div>
+    </div>
+  </div>
+
+
+  <div class="info-msg"
+       [class.show]="mensajeEnPanel !== ''"
+       [class.fade-out]="fadeOutInfoMessage">
+    {{mensajeEnPanel}}
+  </div>
+
+  <div class="share-dialog-container" [class.show]="mostrarContenedorDeMensajeFinal">
+    <div class="share-dialog" [class.show]="mostrarDialogoDeMensajeFinal">
+      <button (click)="refrescar()">Reintentar</button>
+    </div>
+  </div>
+</div>
